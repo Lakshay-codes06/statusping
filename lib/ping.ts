@@ -1,3 +1,4 @@
+import { dispatchAlerts } from "./alerts";
 import { supabase } from "./supabase/client";
 
 export async function pingUrl(url: string) {
@@ -11,7 +12,7 @@ export async function pingUrl(url: string) {
       response_ms: Date.now() - start,
       status_code: res.status,
     };
-  } catch (err) {
+  } catch {
     return {
       status: "down",
       response_ms: null,
@@ -35,7 +36,10 @@ export async function saveCheck(
     });
 
   if (error) {
-    console.error("Save check error:", error);
+    console.error(
+      "Save check error:",
+      error
+    );
   }
 }
 
@@ -50,6 +54,22 @@ export async function processMonitor(
     monitor.id,
     result
   );
+
+  if (
+    monitor.status !== result.status
+  ) {
+    await dispatchAlerts(
+      monitor,
+      result.status
+    );
+
+    await supabase
+      .from("monitors")
+      .update({
+        status: result.status,
+      })
+      .eq("id", monitor.id);
+  }
 
   return result;
 }
