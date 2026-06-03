@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import { supabase } from "@/lib/supabase/client";
 import UptimeChart from "@/components/UptimeChart";
+import SubscribeForm from "@/components/SubscribeForm";
 export default async function StatusPage({
   params,
 }: {
@@ -102,6 +103,9 @@ export default async function StatusPage({
       </div>
       <UptimeChart
   checks={checks || []}
+/>
+<SubscribeForm
+  monitorId={monitor.id}
 />
     </div>
   );
