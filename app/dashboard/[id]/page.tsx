@@ -79,9 +79,28 @@ export default async function MonitorPage({
 
   return (
     <div className="max-w-6xl mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-6">
-        {monitor.name}
-      </h1>
+      <div className="flex items-center justify-between mb-6">
+  <h1 className="text-4xl font-bold">
+    {monitor.name}
+  </h1>
+
+  <a
+    href={`/status/${monitor.slug}`}
+    target="_blank"
+    className="
+    bg-cyan-500
+    hover:bg-cyan-400
+    text-black
+    px-4
+    py-2
+    rounded-xl
+    font-semibold
+    transition
+    "
+  >
+    Public Status Page
+  </a>
+</div>
 
       <div className="mb-6">
         Status: {monitor.status}
