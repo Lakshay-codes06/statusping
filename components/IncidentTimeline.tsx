@@ -40,21 +40,38 @@ export default function IncidentTimeline({
             key={incident.id}
             className="border rounded p-4 mb-3"
           >
-            <div className="flex gap-2 items-center">
-              <span
-                className={`px-2 py-1 rounded text-white text-sm ${
-                  incident.status ===
-                  "resolved"
-                    ? "bg-green-600"
-                    : "bg-yellow-600"
-                }`}
-              >
-                {incident.status ===
-                "resolved"
-                  ? "Resolved"
-                  : "Investigating"}
-              </span>
-            </div>
+       <div className="flex gap-2 items-center mb-2">
+  <span
+    className={`px-2 py-1 rounded text-white text-sm ${
+      incident.status ===
+      "resolved"
+        ? "bg-green-600"
+        : "bg-yellow-600"
+    }`}
+  >
+    {incident.status ===
+    "resolved"
+      ? "Resolved"
+      : "Investigating"}
+  </span>
+
+  {incident.type ===
+    "ssl_expiry" && (
+    <span
+      className="
+      px-2
+      py-1
+      rounded
+      text-xs
+      font-semibold
+      bg-yellow-500/20
+      text-yellow-400
+      "
+    >
+      SSL
+    </span>
+  )}
+</div>
 <h3 className="font-bold text-lg">
   {incident.title}
 </h3>

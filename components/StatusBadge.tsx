@@ -6,24 +6,52 @@ export default function StatusBadge({
   status,
 }: Props) {
   const styles = {
-    up: "bg-green-100 text-green-700",
-    down: "bg-red-100 text-red-700",
-    degraded: "bg-yellow-100 text-yellow-700",
+    up: `
+      bg-green-500/20
+      text-green-400
+      border
+      border-green-500/30
+    `,
+    down: `
+      bg-red-500/20
+      text-red-400
+      border
+      border-red-500/30
+    `,
+    degraded: `
+      bg-yellow-500/20
+      text-yellow-400
+      border
+      border-yellow-500/30
+    `,
   };
 
   const labels = {
-    up: "Operational",
-    down: "Down",
-    degraded: "Degraded",
+    up: "● Operational",
+    down: "● Down",
+    degraded: "● Degraded",
   };
 
   return (
     <span
-      className={`px-2 py-1 rounded-full text-sm ${
-        styles[status as keyof typeof styles]
-      }`}
+      className={`
+        px-3
+        py-1
+        rounded-full
+        text-sm
+        font-medium
+        ${
+          styles[
+            status as keyof typeof styles
+          ]
+        }
+      `}
     >
-      {labels[status as keyof typeof labels]}
+      {
+        labels[
+          status as keyof typeof labels
+        ]
+      }
     </span>
   );
 }
