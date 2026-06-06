@@ -311,6 +311,6 @@ MIT — use it, fork it, self-host it.
 
 ## Author
 
-Built by [Lakshay Sharma](https://github.com/Lakshay-codes06) · 3rd year B.Tech student  
+Built by [Lakshay](https://github.com/Lakshay-codes06) · 3rd year B.Tech student  
 Open to internship opportunities — [LinkedIn](https://www.linkedin.com/in/lakshay-verma-832b13304/)
 
